@@ -11,7 +11,34 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130322213250) do
+ActiveRecord::Schema.define(:version => 20130322215539) do
+
+  create_table "app_roles", :force => true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "apps", :force => true do |t|
+    t.string   "name"
+    t.string   "platform"
+    t.string   "repo"
+    t.string   "ssh_key"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "boxes", :force => true do |t|
+    t.string   "name"
+    t.string   "size"
+    t.boolean  "spot"
+    t.decimal  "spot_max",   :precision => 8, :scale => 2
+    t.integer  "app_id"
+    t.datetime "created_at",                               :null => false
+    t.datetime "updated_at",                               :null => false
+  end
 
   create_table "roles", :force => true do |t|
     t.string   "name"
